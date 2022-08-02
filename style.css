@@ -1,0 +1,104 @@
+* {
+    box-sizing: border-box;
+    background-color: deepskyblue;
+}
+
+body {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+}
+
+main {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+#start-button, #submit-button {
+    display: flex;
+    font-size: x-large;
+    background-color: lightgreen;
+    max-height: 100vh;
+    max-width: 200vh;
+    margin: 10vh 0vh 5vh 0vh;
+    padding: 10vh 20vh;
+
+}
+#choice-button {
+    display: flex;
+    font-size: medium;
+    background-color: whitesmoke;
+    max-height: 50vh;
+    max-width: 200vh;
+}
+
+#choice-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+
+.hidden {
+    display: none;
+}
+
+
+.score {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+
+.timer {
+    font: 20px;
+}
+
+
+.quiz-content {
+    display:flex;
+    justify-content: space-between;
+    margin-top: 12px;
+    min-height: 100px;
+}
+
+#large-font {
+    font-size: 3.5em;
+    text-align:center;
+}
+
+
+#quiz-question {
+    text-align: center;
+    font-size: 2em;
+}
+
+
+@media screen and (max-width: 1183px) {
+    main {
+      flex-direction: column;
+    }
+  
+    section {
+      background-color: white;
+      margin: 20px auto;
+      width: 90vw;
+    }
+}
+  
+@media screen and (max-width: 504px) {
+    .large-font {
+      font-size: 2em;
+    }
+  
+    .timer {
+      height: 200px;
+    }
+}

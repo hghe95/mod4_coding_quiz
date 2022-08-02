@@ -1,0 +1,182 @@
+var startButton = document.querySelector("#start-button");
+var submitButton = document.querySelector("#submit-button");
+var choiceButton = document.querySelector("#choice-button");
+var choiceContainer = document.querySelector("#choice-container");
+var quizQEl = document.querySelector("#quiz-question");
+var initialsEl = document.querySelector("#initials");
+var largeFont = document.querySelector("#large-font");
+var scoreEl = document.querySelector("#score");
+var timerEl = document.querySelector("#timer");
+var bodyEl = document.querySelector('body');
+var olEl = document.querySelector('ol');
+//Questions in the quiz
+
+const questions = [
+    {
+        question: 'How can a datatype be declared to be a constant type?',
+        choices: {
+            a: 'const', 
+            b: 'var',
+            c: 'let',
+            d: 'constant'
+        },
+        correctAnswer: 'a'
+    },
+    {
+        question: 'Which function is used to serialize an object into a JSON string in Javascript?',
+        choices: {
+            a: 'stringify()',
+            b: 'parse()', 
+            c: 'convert()',
+            d: 'None of the above'
+        },
+        correctAnswer: 'a'
+    },
+    {
+        question: 'How do we write a comment in Javascript?',
+        choices: {
+            a: '/*',
+            b: '//', 
+            c: '#',
+            d: '<!--' 
+        },
+        correctAnswer: 'b'
+    },
+    {
+        questions: 'Which of the following tags is used to create a combo box (or drop-down box)?',
+        choices: {
+            a: '<list>',
+            b: '<select>',
+            c: '<input type = "dropdown">',
+            d: '<ul>'
+        },
+        correctAnswer: 'b'
+    },
+    {
+        questions: 'Which of the following is not a value of the font-variant property in CSS?',
+        choices: {
+            a: 'normal', 
+            b: 'small-caps',
+            c: 'large-caps', 
+            d: 'inherit', 
+        correctAnswer: 'c'
+        },
+    }   
+]
+
+var qIndex, timeLeft, timeLength;
+var topScores = JSON.parse(localStorage.getItem("score")) || [];
+
+function startQuiz() {
+    qIndex = 0;
+    timeLeft = 45;
+    timerEl.textContent = `Time remaining: ${timeLeft || 45}`;
+    initialsEl.value = '';
+    startButton.classList.add('hidden');
+    scoreEl.classList.add('hidden');
+    choiceContainer.classList.remove('hidden');
+    document.querySelector('#quiz-content').classList.remove('hidden');
+    timeCount();
+    nextQuestion();
+}
+
+function submitScore(x) {
+    x.preventDefault();
+
+    topScores = [...topScores, {
+        initials: initialsEl.value,
+        score: timeLeft,
+    }];
+
+    if(initialsEl.value.trim().length !=0) {
+        alert("Thanks for playing!");
+        localStorage.setItem("score", JSON.stringify(topScores));
+    } else {
+        alert("Please leave your initials")
+        return 
+    }
+}
+
+function timeCount() {
+    timeLength = setInterval(() => {
+        timeLeft--;
+        timerEl.textContent = `Time reamining: ${timeLeft}`;
+        
+        if (timeLeft === 0) {
+            showScores();
+            clearInterval(timeLength);
+            timerEl.textContent = `Time's up!`;
+        }
+    }, 1000);
+}
+
+//Should this be in chooseAnswer function?
+function renderQuestions(quizQ) {
+    if (questions.length >= qIndex + 1) {
+        quizQEl.textContent = quizQ.question;
+        quizQ.choices.forEach(choice => {
+            var choiceButton = choiceButton.addEventListener('click', chooseAnswer);
+            
+        });
+    }
+}
+
+//Should this be in chooseAnswer function?
+function nextQuestion() {
+    choiceContainer.innerHTML = '';
+    renderQuestions(questions[qIndex]);
+}
+
+function chooseAnswer(x) {
+    var chosenAnswer = x.target;
+    if (questions.length >= qIndex + 1) {
+        quizQEl.textContent = quizQ.question;
+        quizQ.choices.forEach(choice => {
+            var choiceButton = choiceButton.addEventListener('click', chooseAnswer);
+            
+        });
+    }
+
+    if (chosenAnswer != correctAnswer) {
+        timeLeft -= 10;
+    }
+
+    if (questions.length <= qIndex + 1) {
+        clearInterval(timeLength);
+        showScores();
+    }
+
+    qIndex++;
+    nextQuestion();
+}
+
+function showScores() {
+    largeFont.textContent = 'Results';
+    startButton.textContent = 'Restart';
+    choiceContainer.classList.add('hidden');
+    startButton.classList.remove('hidden');
+    scoreEl.classList.remove('hidden');
+    quizQEl.textContent = `Your score: ${timeLeft}`;
+}
+
+function scoreList() {
+    var sortedScore = scoreList.sort((x,y) => y.score - x.score)
+
+    sortedScore.forEach(item => {
+        var liEl = document.createElement("li");
+        liEl.textContent = `${item.initials}: ${item.score}`;
+        olEl.appendChild(liEl);
+    });
+}
+
+//may need to have another html file to put top score
+
+
+if (startButton) {
+    startButton.addEventListener('click', startQuiz);
+    
+}
+
+if (submitButton) {
+    submitButton.addEventListener('click', submitScore);
+}

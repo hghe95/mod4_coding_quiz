@@ -1,12 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Code Quiz</title>
+        <link rel="stylesheet" type="text/css" href="./style.css" />
+    </head>
+    <body>
+        <header>
+            <div id ="large-font">Code Quiz</div>
+        </header>
+        <main>
+            <section><button id = "start-button" class = "start-button">Start Quiz</button>
+            </section>
+            <div id = "quiz-content" class="hidden">
+                <div id = "quiz-question">Question</div>
+                <div id = "choice-container" class="hidden">
+                    <button id = "choice-button"></button>
+                    <button id = "choice-button"></button>
+                    <button id = "choice-button"></button>
+                    <button id = "choice-button"></button>
+                </div>
+            </div>
+            <section>
+                <p id = "timer">Time remaining: </p>
+                <form id ="score" class = "hidden">
+                    <input id ="initials" type =" text" placeholder= "Please enter your initials">
+                    <button id ="submit-button">Submit</button>
+                </form>
+            </section>
+        </main>
+    <script src ="./script.js"></script>
+    </body>
 </html>
