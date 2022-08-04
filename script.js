@@ -111,13 +111,15 @@ function timeCount() {
 }
 
 //Should this be in chooseAnswer function?
-function renderQuestions(quizQ) {
+function renderQuestions(question) {
     if (questions.length >= qIndex + 1) {
-        quizQEl.textContent = quizQ.question;
-        quizQ.choices.forEach(choice => {
-            var choiceButton = choiceButton.addEventListener('click', chooseAnswer);
-            
-        });
+        quizQEl.textContent = question.question;
+        question.choices.forEach(choice => {
+            const choiceButton = document.createElement('button');
+            choiceButton.textContent = choice.text;
+            choiceButton.addEventListener('click', chooseAnswer);
+            choiceContainer.appendChild(choiceButton);
+    });
     }
 }
 
@@ -129,13 +131,6 @@ function nextQuestion() {
 
 function chooseAnswer(x) {
     var chosenAnswer = x.target;
-    if (questions.length >= qIndex + 1) {
-        quizQEl.textContent = quizQ.question;
-        quizQ.choices.forEach(choice => {
-            var choiceButton = choiceButton.addEventListener('click', chooseAnswer);
-            
-        });
-    }
 
     if (chosenAnswer != correctAnswer) {
         timeLeft -= 10;
