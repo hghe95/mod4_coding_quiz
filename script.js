@@ -102,7 +102,7 @@ function submitScore(x) {
 function timeCount() {
     timeLength = setInterval(() => {
         timeLeft--;
-        timerEl.textContent = `Time remaining: ${timeLeft}`;
+        timerEl.textContent = `Time remaining: ${timeLeft} s`;
         
         if (timeLeft <= 0) {
             showScore();
@@ -155,7 +155,11 @@ function showScore() {
     startButton.classList.remove('hidden');
     highScoreButton.classList.remove('hidden');
     scoreEl.classList.remove('hidden');
-    quizQEl.textContent = `Your Score: ${timeLeft}`;
+    if (timeLeft <= 0) {
+        quizQEl.textContent = `Your Score: 0`;
+    } else {
+        quizQEl.textContent = `Your Score: ${timeLeft}`;
+    }
 }
 
 function scoreList() {

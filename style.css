@@ -64,6 +64,7 @@ main {
     max-width: 50vh;
     background-color: bisque;
     font-weight: bold;
+    font-size: larger;
     padding: 2%;
 }
 
