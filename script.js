@@ -165,7 +165,7 @@ function showScore() {
 
 function scoreList() {
     var sortedScore = topScores.sort((x,y) => y.score - x.score)
-
+    
     sortedScore.forEach(item => {
         var liEl = document.createElement("li");
         liEl.textContent = `${item.initials}: ${item.score}`;

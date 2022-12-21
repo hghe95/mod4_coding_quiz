@@ -39,7 +39,7 @@ main {
     align-items: center;
     justify-content: center;
     font-size: x-large;
-    background-color: fuchsia;
+    background-color: pink;
     max-height: 50vh;
     max-width: 100vh;
     margin: 10vh 0vh 5vh 0vh;
@@ -49,7 +49,7 @@ main {
 }
 
 #highscore-button {
-    background-color:lightpink;
+    color:magenta;
     font-size: large;
     max-height: 75vh;
     max-width: 125vh;
@@ -104,6 +104,11 @@ main {
     text-align:center;
 }
 
+.high-score {
+    align-items: center;
+    font-weight: bold;
+    color: forestgreen;
+}
 
 #quiz-question {
     text-align: center;
