@@ -8,7 +8,6 @@ var initialsEl = document.querySelector("#initials");
 var largeFont = document.querySelector("#large-font");
 var scoreEl = document.querySelector("#score");
 var timerEl = document.querySelector("#timer");
-var bodyEl = document.querySelector('body');
 var olEl = document.querySelector('ol');
 //Questions in the quiz
 
@@ -135,9 +134,9 @@ function nextQuestion() {
 
 function chooseAnswer(x) {
     var chosenAnswer = x.target.getAttribute("data-value");
-    console.log("Answer".chosenAnswer);
+    console.log("Answer",chosenAnswer);
 
-    if (chosenAnswer != questions.correctAnswer) {
+    if (chosenAnswer != questions[qIndex].correctAnswer) {
         timeLeft -= 10;
     }
 
