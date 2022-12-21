@@ -45,11 +45,29 @@ main {
     margin: 10vh 0vh 5vh 0vh;
     padding: 10vh 20vh;
     border: none;
-    border-radius: 20%;
+    border-radius: 30%;
+}
+
+#highscore-button {
+    background-color:lightpink;
+    font-size: large;
+    max-height: 75vh;
+    max-width: 125vh;
+    border: none;
+}
+
+#initials {
+    align-items: center;
+    font-size: medium;
+    border: none;
+    max-height: 20vh;
+    max-width: 50vh;
+    background-color: bisque;
+    font-weight: bold;
+    padding: 2%;
 }
 
 #choice-button {
-    display: flex;
     font-size: medium;
     border: none;
     background-color: whitesmoke;
@@ -58,9 +76,12 @@ main {
 }
 
 #choice-container {
-    display: flex;
     justify-content: space-between;
     margin-top: 16px;
+}
+
+.quiz-content {
+    min-height: 100px;
 }
 
 .hidden {
@@ -69,21 +90,12 @@ main {
 
 
 .score {
-    display: flex;
     justify-content: space-between;
     margin-top: 16px;
 }
 
 .timer {
     font: 20px;
-}
-
-
-.quiz-content {
-    display:flex;
-    justify-content: space-between;
-    margin-top: 12px;
-    min-height: 100px;
 }
 
 #large-font {

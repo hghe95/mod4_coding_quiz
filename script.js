@@ -1,6 +1,7 @@
 var startButton = document.querySelector("#start-button");
 var submitButton = document.querySelector("#submit-button");
 var choiceButton = document.querySelector("#choice-button");
+var highScoreButton = document.querySelector("#highscore-button");
 var choiceContainer = document.querySelector("#choice-container");
 var quizQEl = document.querySelector("#quiz-question");
 var initialsEl = document.querySelector("#initials");
@@ -73,6 +74,7 @@ function startQuiz() {
     timerEl.textContent = `Time remaining: ${timeLeft || 45}`;
     initialsEl.value = '';
     startButton.classList.add('hidden');
+    highScoreButton.classList.add('hidden');
     scoreEl.classList.add('hidden');
     choiceContainer.classList.remove('hidden');
     document.querySelector('#quiz-content').classList.remove('hidden');
@@ -100,10 +102,10 @@ function submitScore(x) {
 function timeCount() {
     timeLength = setInterval(() => {
         timeLeft--;
-        timerEl.textContent = `Time reamining: ${timeLeft}`;
+        timerEl.textContent = `Time remaining: ${timeLeft}`;
         
         if (timeLeft === 0) {
-            showScores();
+            showScore();
             clearInterval(timeLength);
             timerEl.textContent = `Time's up!`;
         }
@@ -138,20 +140,21 @@ function chooseAnswer(x) {
 
     if (questions.length <= qIndex + 1) {
         clearInterval(timeLength);
-        showScores();
+        showScore();
     }
 
     qIndex++;
     nextQuestion();
 }
 
-function showScores() {
+function showScore() {
     largeFont.textContent = 'Results';
     startButton.textContent = 'Restart';
     choiceContainer.classList.add('hidden');
     startButton.classList.remove('hidden');
+    highScoreButton.classList.remove('hidden');
     scoreEl.classList.remove('hidden');
-    quizQEl.textContent = `Your score: ${timeLeft}`;
+    quizQEl.textContent = `Your Score: ${timeLeft}`;
 }
 
 function scoreList() {
@@ -164,8 +167,6 @@ function scoreList() {
     });
 }
 
-//may need to have another html file to put top score
-
 
 if (startButton) {
     startButton.addEventListener('click', startQuiz);
@@ -174,4 +175,8 @@ if (startButton) {
 
 if (submitButton) {
     submitButton.addEventListener('click', submitScore);
+}
+
+if (highScoreButton) {
+    highScoreButton.addEventListener('click', scoreList);
 }
