@@ -116,12 +116,14 @@ function timeCount() {
 function renderQuestions(question) {
     if (questions.length >= qIndex + 1) {
         quizQEl.textContent = question.question;
-        question.choices.forEach(choice => {
+        console.log(questions[qIndex].choices);
+
+        Object.keys(questions[qIndex].choices).forEach(key => {
             const choiceButton = document.createElement('button');
-            choiceButton.textContent = choice.text;
+            choiceButton.textContent = questions[qIndex].choices[key];
             choiceButton.addEventListener('click', chooseAnswer);
             choiceContainer.appendChild(choiceButton);
-    });
+        });
     }
 }
 
