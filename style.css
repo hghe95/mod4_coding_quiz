@@ -23,13 +23,15 @@ main {
 }
 
 #start-button, #submit-button {
-    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: x-large;
     background-color: lightgreen;
     max-height: 100vh;
     max-width: 200vh;
     margin: 10vh 0vh 5vh 0vh;
     padding: 10vh 20vh;
+    border: none;
 
 }
 #choice-button {
@@ -95,7 +97,7 @@ main {
   
 @media screen and (max-width: 504px) {
     .large-font {
-      font-size: 2em;
+      font-size: 130%;
     }
   
     .timer {
