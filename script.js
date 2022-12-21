@@ -120,6 +120,7 @@ function renderQuestions(question) {
 
         Object.keys(questions[qIndex].choices).forEach(key => {
             const choiceButton = document.createElement('button');
+            choiceButton.setAttribute("data-value",key);
             choiceButton.textContent = questions[qIndex].choices[key];
             choiceButton.addEventListener('click', chooseAnswer);
             choiceContainer.appendChild(choiceButton);
@@ -133,7 +134,8 @@ function nextQuestion() {
 }
 
 function chooseAnswer(x) {
-    var chosenAnswer = x.target;
+    var chosenAnswer = x.target.getAttribute("data-value");
+    console.log("Answer".chosenAnswer);
 
     if (chosenAnswer != questions.correctAnswer) {
         timeLeft -= 10;
