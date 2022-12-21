@@ -37,6 +37,7 @@ main {
 #choice-button {
     display: flex;
     font-size: medium;
+    border: none;
     background-color: whitesmoke;
     max-height: 50vh;
     max-width: 200vh;
