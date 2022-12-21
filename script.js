@@ -44,7 +44,7 @@ const questions = [
         correctAnswer: 'b'
     },
     {
-        questions: 'Which of the following tags is used to create a combo box (or drop-down box)?',
+        question: 'Which of the following tags is used to create a combo box (or drop-down box)?',
         choices: {
             a: '<list>',
             b: '<select>',
@@ -54,14 +54,14 @@ const questions = [
         correctAnswer: 'b'
     },
     {
-        questions: 'Which of the following is not a value of the font-variant property in CSS?',
+        question: 'Which of the following is not a value of the font-variant property in CSS?',
         choices: {
             a: 'normal', 
             b: 'small-caps',
             c: 'large-caps', 
             d: 'inherit', 
-        correctAnswer: 'c'
         },
+        correctAnswer: 'c'
     }   
 ]
 
@@ -104,7 +104,7 @@ function timeCount() {
         timeLeft--;
         timerEl.textContent = `Time remaining: ${timeLeft}`;
         
-        if (timeLeft === 0) {
+        if (timeLeft <= 0) {
             showScore();
             clearInterval(timeLength);
             timerEl.textContent = `Time's up!`;
@@ -112,7 +112,7 @@ function timeCount() {
     }, 1000);
 }
 
-//Should this be in chooseAnswer function?
+
 function renderQuestions(question) {
     if (questions.length >= qIndex + 1) {
         quizQEl.textContent = question.question;
@@ -127,7 +127,6 @@ function renderQuestions(question) {
     }
 }
 
-//Should this be in chooseAnswer function?
 function nextQuestion() {
     choiceContainer.innerHTML = '';
     renderQuestions(questions[qIndex]);
@@ -136,7 +135,7 @@ function nextQuestion() {
 function chooseAnswer(x) {
     var chosenAnswer = x.target;
 
-    if (chosenAnswer != correctAnswer) {
+    if (chosenAnswer != questions.correctAnswer) {
         timeLeft -= 10;
     }
 
@@ -160,7 +159,7 @@ function showScore() {
 }
 
 function scoreList() {
-    var sortedScore = scoreList.sort((x,y) => y.score - x.score)
+    var sortedScore = topScores.sort((x,y) => y.score - x.score)
 
     sortedScore.forEach(item => {
         var liEl = document.createElement("li");
@@ -172,7 +171,6 @@ function scoreList() {
 
 if (startButton) {
     startButton.addEventListener('click', startQuiz);
-    
 }
 
 if (submitButton) {
